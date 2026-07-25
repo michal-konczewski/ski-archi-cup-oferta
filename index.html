@@ -377,7 +377,7 @@
   .g-item .cap{padding:12px 14px;font-size:var(--fs-sm);color:var(--text);font-weight:500;}
   .lightbox{display:none;position:fixed;inset:0;background:rgba(20,20,22,.4);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
   .lightbox.open{display:flex;}
-  .lightbox-box{width:min(600px,88vw);background:#fff;border-radius:16px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.16);
+  .lightbox-box{width:min(1200px,94vw);max-height:92vh;overflow:auto;background:#fff;border-radius:16px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.16);
     opacity:0;transform:scale(.96);transition:opacity .2s var(--ease), transform .2s var(--ease);}
   .lightbox.open .lightbox-box{opacity:1;transform:scale(1);}
   .lightbox-box .lb-head{display:flex;justify-content:flex-end;margin-bottom:12px;}
@@ -473,7 +473,6 @@
   }
   .qa-btn:hover{background:var(--surface2);color:var(--text);}
   .qa-btn.on{background:var(--text);color:#fff;border-color:var(--text);}
-  body{padding-bottom:52px;}
 
   /* ============ TABLET (<=960px) ============ */
   @media(max-width:960px){
@@ -717,33 +716,12 @@
   </div>
 </div></section>
 
-<footer>
-  <div class="f-brand">
-    <span class="logo-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#1570EF"/><path d="M39.2695 85.7181C39.1591 84.6844 38.6935 83.8794 37.8728 83.3034C37.06 82.7273 36.0025 82.4393 34.7004 82.4393C33.785 82.4393 32.9998 82.5774 32.3448 82.8536C31.6898 83.1298 31.1887 83.5046 30.8415 83.9781C30.4943 84.4516 30.3167 84.9921 30.3088 85.5998C30.3088 86.1048 30.4233 86.5428 30.6521 86.9137C30.8889 87.2846 31.2085 87.6002 31.6109 87.8607C32.0134 88.1132 32.4593 88.3263 32.9485 88.4999C33.4378 88.6735 33.931 88.8195 34.4282 88.9378L36.7009 89.506C37.6163 89.7191 38.4962 90.0071 39.3406 90.3701C40.1928 90.7331 40.9544 91.1908 41.6251 91.7432C42.3038 92.2956 42.8404 92.9625 43.235 93.7437C43.6296 94.525 43.8268 95.4404 43.8268 96.4899C43.8268 97.9104 43.4638 99.1612 42.7378 100.242C42.0118 101.316 40.9623 102.156 39.5892 102.764C38.2239 103.363 36.5707 103.663 34.6294 103.663C32.7434 103.663 31.1059 103.371 29.717 102.787C28.336 102.203 27.2549 101.351 26.4736 100.23C25.7003 99.1099 25.282 97.7447 25.2189 96.1348H29.5394C29.6026 96.9792 29.863 97.6815 30.3207 98.2418C30.7784 98.8021 31.3742 99.2203 32.1081 99.4965C32.8499 99.7727 33.6785 99.9108 34.5939 99.9108C35.5487 99.9108 36.3852 99.7688 37.1034 99.4847C37.8294 99.1927 38.3975 98.7903 38.8079 98.2773C39.2183 97.7565 39.4274 97.1489 39.4353 96.4544C39.4274 95.8231 39.2419 95.3023 38.8789 94.8919C38.5159 94.4737 38.0069 94.1264 37.3519 93.8502C36.7048 93.5662 35.9473 93.3136 35.0792 93.0927L32.3212 92.3824C30.3246 91.8695 28.7463 91.0922 27.5863 90.0505C26.4342 89.001 25.8581 87.6081 25.8581 85.872C25.8581 84.4437 26.2448 83.1929 27.0181 82.1197C27.7994 81.0464 28.8608 80.2139 30.2023 79.622C31.5439 79.0223 33.063 78.7224 34.7596 78.7224C36.4799 78.7224 37.9872 79.0223 39.2814 79.622C40.5835 80.2139 41.6054 81.0385 42.3472 82.096C43.089 83.1455 43.4717 84.3529 43.4954 85.7181H39.2695Z" fill="white"/></svg></span>
-    <span>SKI ARCHI CUP N°XXXV — prototyp interaktywny</span>
-  </div>
-  <span>M-ACTIVE</span>
-</footer>
-
 <div class="lightbox" id="lightbox">
   <div class="lightbox-box">
     <div class="lb-head"><span class="lightbox-close" onclick="closeLightbox()">Zamknij ✕</span></div>
     <div class="ph"></div>
     <div id="lightboxCap" style="font-size:14.5px;font-weight:600;letter-spacing:-.005em;"></div>
   </div>
-</div>
-
-<!-- QA / states preview — narzędzie do przeglądu stanów, nie część finalnego produktu -->
-<div class="qa-panel">
-  <span class="qa-label">Podgląd stanów</span>
-  <button class="qa-btn" onclick="qaReset()">Domyślny</button>
-  <button class="qa-btn" onclick="qaSelect()">Zaznaczony</button>
-  <button class="qa-btn" onclick="qaHighlightDisabled()">Niedostępny</button>
-  <button class="qa-btn" onclick="qaShareLimit()">Limit udostępnień</button>
-  <button class="qa-btn" onclick="qaSending()">Wysyłanie</button>
-  <button class="qa-btn" onclick="qaSuccess()">Sukces</button>
-  <button class="qa-btn" onclick="qaError()">Błąd</button>
-  <button class="qa-btn" id="qaExpiredBtn" onclick="qaExpired()">Wygasła oferta</button>
 </div>
 
 <script>
