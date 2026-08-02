@@ -115,16 +115,14 @@
   .hero-badge b{color:var(--text);font-weight:600;}
   .key-visual{margin-bottom:28px;}
   .key-visual-inner{
-    aspect-ratio:21/8;border-radius:16px;border:1.5px dashed var(--border-strong);background:var(--surface);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:20px;
+    aspect-ratio:21/8;border-radius:16px;overflow:hidden;background:var(--surface);
   }
-  .key-visual-inner span{font-size:var(--fs-base);font-weight:600;color:var(--muted);}
-  .key-visual-inner em{font-size:var(--fs-xs);font-style:normal;color:var(--faint);}
+  .key-visual-inner img{width:100%;height:100%;object-fit:cover;display:block;}
   h1.event-name{
     font-size:clamp(30px,3.6vw,44px);font-weight:500;letter-spacing:var(--tracking-snug);line-height:1.1;
     margin:0;color:var(--text);max-width:764px;flex:1;min-width:280px;
   }
-  h1.event-name .accent{color:var(--accent);}
+  h1.event-name .accent{color:var(--text);}
   .hero-headline-row{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:40px;flex-wrap:wrap;}
   h1{font-size:clamp(38px,6.8vw,84px);font-weight:500;letter-spacing:var(--tracking-tight);line-height:1.03;margin:0 0 18px;}
   h1 .accent{color:var(--accent);}
@@ -151,7 +149,7 @@
   .countdown-box .cd-row{display:flex;align-items:center;gap:0;}
   .countdown-box .cd-cell{text-align:center;padding:0 20px;}
   .countdown-box .cd-sep{width:1px;align-self:stretch;background:var(--border);}
-  .countdown-box b{font-size:var(--fs-3xl);font-weight:800;color:var(--accent);display:block;line-height:1;letter-spacing:var(--tracking-tight);}
+  .countdown-box b{font-size:var(--fs-3xl);font-weight:800;color:var(--text);display:block;line-height:1;letter-spacing:var(--tracking-tight);}
   .countdown-box span{font-size:var(--fs-2xs);color:var(--muted);text-transform:uppercase;letter-spacing:var(--tracking-wide);font-weight:600;display:block;margin-top:6px;}
   .countdown-box .cd-cell.secs b{color:var(--text);}
 
@@ -173,6 +171,7 @@
   .tab-panel{display:none;}
   .tab-panel.active{display:block;max-width:640px;}
   .rows-full{width:100%;}
+  .research-note{font-size:var(--fs-xs);color:var(--faint);margin-top:24px;max-width:640px;line-height:1.6;}
 
   .tabs-row{display:flex;align-items:center;gap:8px;margin:32px 0 36px;}
   .tabs-row .tabs{margin:0;flex:1;min-width:0;}
@@ -198,7 +197,7 @@
   .firm-list-head{margin-bottom:18px;}
   .firm-list-card h4{font-size:var(--fs-lg);font-weight:500;margin:0 0 8px;line-height:1.4;letter-spacing:var(--tracking-snug);max-width:600px;}
   .firm-stats{font-size:var(--fs-sm);color:var(--muted);}
-  .firm-stats #firmCount{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;}
+  .firm-stats #firmCount{font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;}
 
   .firm-search-row{
     position:relative;margin-bottom:16px;
@@ -326,6 +325,10 @@
   }
   .sb-cta:hover{background:var(--accent);}
   .sb-cta:active{transform:scale(.98);}
+  .sb-cta.sending .spinner{display:inline-block;}
+  .sb-cta.sending span:not(.spinner){display:none;}
+  .sb-cta.sending{opacity:.85;cursor:default;}
+  .sb-note{font-size:var(--fs-xs);color:var(--muted);line-height:1.55;margin:14px 0 10px;}
 
   .share-row{margin-top:10px;display:flex;align-items:center;gap:10px;}
   .share-btn{
@@ -509,11 +512,11 @@
     h2{font-size:clamp(24px,7vw,32px);}
     .dim-grid{border-radius:10px;}
     .dim-cell{padding:18px;}
-    .tabs-row{margin:24px 0 26px;}
-    .tabs{gap:6px 4px;margin:0;flex-wrap:wrap;overflow-x:visible;}
-    .tabs-arrow{display:none;}
-    .tab-btn{flex:none;white-space:normal;}
-    .tab-btn{padding:10px 12px;font-size:12px;}
+    .tabs-row{margin:24px 0 26px;gap:6px;}
+    .tabs{gap:4px;margin:0;flex-wrap:nowrap;overflow-x:auto;}
+    .tabs-arrow{width:28px;height:28px;}
+    .tabs-arrow svg{width:14px;height:14px;}
+    .tab-btn{flex:none;white-space:nowrap;padding:10px 12px;font-size:12px;}
     .stat-row{grid-template-columns:1fr auto;grid-template-rows:auto auto;row-gap:6px;}
     .stat-row .track{grid-column:1/2;}
     .stat-row .num{grid-column:2/3;grid-row:1/2;}
@@ -561,8 +564,7 @@
   </div>
   <div class="key-visual">
     <div class="key-visual-inner">
-      <span>Miejsce na grafikę kluczową wydarzenia 2027</span>
-      <em>(w przygotowaniu — motyw graficzny na przyszłą edycję)</em>
+      <img src="images/key-visual.jpg" alt="Ski Archi Cup — grafika wydarzenia">
     </div>
   </div>
   <div class="hero-headline-row">
@@ -610,6 +612,7 @@
     </button>
   </div>
   <div id="statPanels"></div>
+  <p class="research-note">Cząstkowe wyniki badań uczestników imprez SPORTARCHITEKT. Grupa ankietowanych wynosi 200 osób.</p>
 </div></section>
 
 <section id="przywileje">
@@ -665,7 +668,10 @@
         <div class="share-gate-msg" id="shareGateMsg"></div>
       </div>
 
-      <button class="sb-cta" onclick="scrollToId('kontakt')">Wyślij pakiet →</button>
+      <p class="sb-note">Klikając „Wyślij pakiet", przygotowana wiadomość z podsumowaniem wybranych zostanie wysłana do M-ACTIVE.</p>
+      <button class="sb-cta" id="sbSendBtn" onclick="sendPackageFromSummary()">
+        <span class="spinner" id="sbSpinner"></span><span id="sbSendLabel">Wyślij pakiet →</span>
+      </button>
     </div>
   </div>
 </section>
@@ -697,7 +703,7 @@
       <div class="form-view" id="formView">
         <div class="send-summary">
           <div class="send-summary-row"><span>Twój skonfigurowany pakiet</span><span class="tnum" id="ctaTotal">16 000 PLN</span></div>
-          <p class="send-summary-note">Klikając „Wyślij pakiet" przygotujemy wiadomość z podsumowaniem wybranych pozycji i wyślemy ją do Marka Durskiego.</p>
+          <p class="send-summary-note">Klikając „Wyślij pakiet", przygotowana wiadomość z podsumowaniem wybranych zostanie wysłana do M-ACTIVE.</p>
         </div>
         <button class="submit-btn" id="submitBtn" onclick="submitForm()">
           <span class="spinner"></span><span class="btn-label">Wyślij pakiet</span>
@@ -871,6 +877,7 @@ const firmsData = [
   {"name": "Bogucki Urbanowicz Architekci", "city": "Kraków", "url": "https://bua.com.pl/"},
   {"name": "BOOM.ARCHITECTS", "city": "Kraków", "url": "https://boomarchitects.com/"},
   {"name": "BPI Architekci", "city": "Lublin", "url": "http://www.bpiarchitekci.pl/"},
+  {"name": "Buro Happold", "city": "Warszawa", "url": "https://www.burohappold.com/offices/warsaw/"},
   {"name": "CAVU Architekci", "city": "Kraków", "url": "https://www.cavuarchitekci.pl/"},
   {"name": "Centralny Port Komunikacyjny", "city": "Warszawa", "url": "https://portpolska.pl/pl/"},
   {"name": "DSGN", "city": "Warszawa", "url": "https://www.dsgn.pl/"},
@@ -884,8 +891,8 @@ const firmsData = [
   {"name": "Hexa Green Architekt", "city": "Kielce", "url": "https://hexagreen.pl/"},
   {"name": "integra projekt", "city": "Buczkowice", "url": "http://www.integraprojekt.com/"},
   {"name": "JPArchitekci", "city": "Warszawa", "url": "http://jparchitekci.pl/"},
-  {"name": "Buro Happold", "city": "Warszawa", "url": "https://www.burohappold.com/offices/warsaw/"},
   {"name": "KiP", "city": "Warszawa", "url": "https://kip.waw.pl/"},
+  {"name": "KONCEPT Grupa Architektoniczna", "city": "Wrocław", "url": "https://www.koncept-architekci.pl/"},
   {"name": "KRYJAK - Biuro Projektów", "city": "Tychy", "url": "https://www.kryjak.pl/"},
   {"name": "LAB3 Architekci", "city": "Poznań", "url": "https://www.lab3.pl/"},
   {"name": "Latergrupa Architekci", "city": "Warszawa", "url": "https://latergrupa.pl/"},
@@ -893,7 +900,6 @@ const firmsData = [
   {"name": "Mamgusta Architekci", "city": "Warszawa", "url": "https://mamgusta.com/"},
   {"name": "Marlena Pilch PRO ARCHITEKTURA", "city": "Kraków", "url": "https://pilch.pro/"},
   {"name": "Mąka Sojka Architekci", "city": "Warszawa", "url": "http://maka-sojka.com/"},
-  {"name": "Mieszko Mazurek Koncept Grupa Architektoniczna", "city": "Wrocław", "url": "https://www.koncept-architekci.pl/"},
   {"name": "Mobius Architekci", "city": "Warszawa", "url": "https://mobius.pl/"},
   {"name": "MOFO Architekci", "city": "Kraków", "url": "https://mofo.pl/"},
   {"name": "NEOM", "city": "Tabuk", "url": "https://neom-international.com/neom-design/"},
@@ -947,7 +953,7 @@ document.getElementById('firmListStandalone').innerHTML = `
   <div class="firm-list-card">
     <div class="firm-list-head">
       <div>
-        <h4>Lista biur, których reprezentanci<br>byli na ostatniej imprezie SKI ARCHI CUP</h4>
+        <h4>Wybrane biura projektowe, których reprezentanci<br>byli na ostatniej imprezie SKI ARCHI CUP</h4>
         <div class="firm-stats"><span id="firmCount">${firmsData.length}</span> pracowni architektonicznych · ${firmCitiesCount} miast w Polsce</div>
       </div>
     </div>
@@ -1187,17 +1193,31 @@ function syncCtaTotal(){
   if(el) el.textContent = total.toLocaleString('pl-PL')+' PLN';
 }
 
+function buildPackageMailto(){
+  const {total, selected} = currentOrderSummary();
+  let body="Dzień dobry,\n\nProszę o kontakt w sprawie oferty sponsorskiej Ski Archi Cup 2027.\n\nPakiet Podstawowy: 16 000 PLN netto\n";
+  if(selected.length){ body+="\nWybrane opcje z Pakietu Dodatkowego:\n"; selected.forEach(s=>body+=`- ${s.name} (${s.price} PLN)\n`); }
+  body+=`\nSzacowana wartość łączna: ${total.toLocaleString('pl-PL')} PLN netto\n\nPozdrawiam`;
+  return `mailto:durski@m-active.pl?subject=${encodeURIComponent('Zapytanie o ofertę sponsorską — Ski Archi Cup 2027')}&body=${encodeURIComponent(body)}`;
+}
+function sendPackageFromSummary(){
+  const btn=document.getElementById('sbSendBtn');
+  const label=document.getElementById('sbSendLabel');
+  btn.classList.add('sending'); btn.disabled=true;
+  setTimeout(()=>{
+    btn.classList.remove('sending'); btn.disabled=false;
+    label.textContent='Wysłano ✓';
+    window.location.href=buildPackageMailto();
+    setTimeout(()=>{ label.textContent='Wyślij pakiet →'; }, 2200);
+  }, 850);
+}
 function submitForm(){
   const btn=document.getElementById('submitBtn');
   btn.classList.add('sending'); btn.disabled=true;
   setTimeout(()=>{
     btn.classList.remove('sending'); btn.disabled=false;
     showStatus('success');
-    const {total, selected} = currentOrderSummary();
-    let body="Dzień dobry,\n\nProszę o kontakt w sprawie oferty sponsorskiej Ski Archi Cup 2027.\n\nPakiet Podstawowy: 16 000 PLN netto\n";
-    if(selected.length){ body+="\nWybrane opcje z Pakietu Dodatkowego:\n"; selected.forEach(s=>body+=`- ${s.name} (${s.price} PLN)\n`); }
-    body+=`\nSzacowana wartość łączna: ${total.toLocaleString('pl-PL')} PLN netto\n\nPozdrawiam`;
-    window.location.href=`mailto:durski@m-active.pl?subject=${encodeURIComponent('Zapytanie o ofertę sponsorską — Ski Archi Cup 2027')}&body=${encodeURIComponent(body)}`;
+    window.location.href=buildPackageMailto();
   }, 900);
 }
 function showStatus(kind){
