@@ -149,7 +149,7 @@
   .countdown-box .cd-row{display:flex;align-items:center;gap:0;}
   .countdown-box .cd-cell{text-align:center;padding:0 20px;}
   .countdown-box .cd-sep{width:1px;align-self:stretch;background:var(--border);}
-  .countdown-box b{font-size:var(--fs-3xl);font-weight:800;color:var(--text);display:block;line-height:1;letter-spacing:var(--tracking-tight);}
+  .countdown-box b{font-size:var(--fs-3xl);font-weight:600;color:var(--text);display:block;line-height:1;letter-spacing:var(--tracking-tight);}
   .countdown-box span{font-size:var(--fs-2xs);color:var(--muted);text-transform:uppercase;letter-spacing:var(--tracking-wide);font-weight:600;display:block;margin-top:6px;}
   .countdown-box .cd-cell.secs b{color:var(--text);}
 
@@ -973,39 +973,39 @@ const previewIcon = `<button class="preview-btn" title="Zobacz zdjęcie" aria-la
 
 /* ---------- PAKIET PODSTAWOWY — klikalne pozycje z podglądem foto ---------- */
 const baseItems = [
-  "Logotyp na flagach ulokowanych przed głównym wejściem do hotelu",
-  "Logotyp na potykaczach ulokowanych w wejściu głównym do hotelu",
-  "Logotyp przy recepcji głównej organizatora w trakcie expo",
-  "Logotyp w oficjalnym programie imprezy (wersja elektroniczna)",
-  "Logotyp w newsletterze rozsyłanym do uczestników imprezy",
-  "Logotyp na dyplomach dla zwycięzców",
-  "Prawo do lokowania materiałów promocyjnych w oficjalnym pakiecie startowym",
-  "Logotyp na stronie internetowej imprezy",
-  "Dostęp do bazy danych uczestników po imprezie",
-  "NOWOŚĆ: dostęp do wyników badań ankietowych architektów",
+  {name:"Logotyp na flagach ulokowanych przed głównym wejściem do hotelu", img:"images/przywileje/flagi-hotel.jpg"},
+  {name:"Logotyp na potykaczach ulokowanych w wejściu głównym do hotelu", img:"images/przywileje/potykacze-hotel.jpg"},
+  {name:"Logotyp przy recepcji głównej organizatora w trakcie expo", img:"images/przywileje/recepcja-expo.jpg"},
+  {name:"Logotyp w oficjalnym programie imprezy (wersja elektroniczna)"},
+  {name:"Logotyp w newsletterze rozsyłanym do uczestników imprezy"},
+  {name:"Logotyp na dyplomach dla zwycięzców"},
+  {name:"Prawo do lokowania materiałów promocyjnych w oficjalnym pakiecie startowym", img:"images/przywileje/materialy-pakiet-startowy.jpg"},
+  {name:"Logotyp na stronie internetowej imprezy"},
+  {name:"Dostęp do bazy danych uczestników po imprezie"},
+  {name:"NOWOŚĆ: dostęp do wyników badań ankietowych architektów"},
 ];
 const baseListEl=document.getElementById('baseList');
-baseItems.forEach(name=>{
+baseItems.forEach(item=>{
   const li=document.createElement('li');
-  li.innerHTML = `<span>${name}</span>${previewIcon}`;
-  li.onclick=()=>openLightbox(name);
+  li.innerHTML = `<span>${item.name}</span>${previewIcon}`;
+  li.onclick=()=>openLightbox(item.name, item.img);
   const prevBtn = li.querySelector('.preview-btn');
-  prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(name); };
+  prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(item.name, item.img); };
   baseListEl.appendChild(li);
 });
 
 /* ---------- ADDONS / PACKAGE ---------- */
 const addons = [
-  {name:"Logotyp na głównym słupie informacyjnym w hotelu", price:300},
+  {name:"Logotyp na głównym słupie informacyjnym w hotelu", price:300, img:"images/przywileje/slup-informacyjny.jpg"},
   {name:"Logotyp na materiałach informacyjnych – pokoje hotelowe", price:600},
-  {name:"Logotyp na ściance – tło dekoracji zwycięzców", price:1200},
-  {name:"Logotyp na namiocie startowym", price:1500},
-  {name:"Logotyp na słupkach startowych", price:1200},
-  {name:"Przedstawiciel wywołany do wręczenia nagród w trakcie …", price:1000},
-  {name:"Udział w expo", price:2400},
-  {name:"Własne materiały marketingowe na stoku", price:1000},
-  {name:"Realizacja konkursu dla architektów w trakcie sobotniego…", price:1200},
-  {name:"Logotyp na szmatach gigantowych – opcja na wyłączność", price:3600, disabled:true, tag:"Zarezerwowane"},
+  {name:"Logotyp na ściance – tło dekoracji zwycięzców", price:1200, img:"images/przywileje/scianka-dekoracji.jpg"},
+  {name:"Logotyp na namiocie startowym", price:1500, img:"images/przywileje/namiot-startowy.jpg"},
+  {name:"Logotyp na słupkach startowych", price:1200, img:"images/przywileje/slupki-startowe.jpg"},
+  {name:"Przedstawiciel wywołany do wręczenia nagród w trakcie …", price:1000, img:"images/przywileje/wreczenie-nagrod.jpg"},
+  {name:"Udział w expo", price:2400, img:"images/przywileje/udzial-w-expo-logo.jpg"},
+  {name:"Własne materiały marketingowe na stoku", price:1000, img:"images/przywileje/materialy-marketingowe-stok.jpg"},
+  {name:"Realizacja konkursu dla architektów w trakcie sobotniego…", price:1200, img:"images/przywileje/konkurs-architekci-sobota.jpg"},
+  {name:"Logotyp na szmatach gigantowych – opcja na wyłączność", price:3600, disabled:true, tag:"Zarezerwowane", img:"images/przywileje/szmaty-gigantowe.jpg"},
   {name:"Udział w prezentacji realizacji obiektów referencyjnych", price:1000},
 ];
 const addonListEl=document.getElementById('addonList');
@@ -1019,7 +1019,7 @@ addons.forEach((item,idx)=>{
     li.onclick=(ev)=>{ toggleAddon(idx, li, ev); };
   }
   const prevBtn = li.querySelector('.preview-btn');
-  prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(item.name); };
+  prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(item.name, item.img); };
   addonListEl.appendChild(li);
 
   const sm=document.createElement('li'); sm.className='sm-item'; sm.id='sm-'+idx;
