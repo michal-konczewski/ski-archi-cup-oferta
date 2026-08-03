@@ -149,7 +149,7 @@
   .countdown-box .cd-row{display:flex;align-items:center;gap:0;}
   .countdown-box .cd-cell{text-align:center;padding:0 20px;}
   .countdown-box .cd-sep{width:1px;align-self:stretch;background:var(--border);}
-  .countdown-box b{font-size:var(--fs-3xl);font-weight:800;color:var(--text);display:block;line-height:1;letter-spacing:var(--tracking-tight);}
+  .countdown-box b{font-size:var(--fs-3xl);font-weight:600;color:var(--text);display:block;line-height:1;letter-spacing:var(--tracking-tight);}
   .countdown-box span{font-size:var(--fs-2xs);color:var(--muted);text-transform:uppercase;letter-spacing:var(--tracking-wide);font-weight:600;display:block;margin-top:6px;}
   .countdown-box .cd-cell.secs b{color:var(--text);}
 
@@ -164,7 +164,7 @@
   .tabs{display:flex;gap:4px;margin:32px 0 36px;border-bottom:1px solid var(--border);flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .tabs::-webkit-scrollbar{display:none;}
   .tab-btn{flex:none;white-space:nowrap;}
-  .tab-btn{font-size:var(--fs-sm);font-weight:600;color:var(--muted);background:none;border:none;padding:12px 18px;cursor:pointer;position:relative;transition:color .15s;letter-spacing:.005em;}
+  .tab-btn{font-size:var(--fs-base);font-weight:600;color:var(--muted);background:none;border:none;padding:14px 18px;cursor:pointer;position:relative;transition:color .15s;letter-spacing:.005em;}
   .tab-btn:after{content:"";position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:transparent;border-radius:2px;transition:background .15s;}
   .tab-btn.active{color:var(--text);}
   .tab-btn.active:after{background:var(--accent);}
@@ -256,6 +256,8 @@
     display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:500;
   }
   .base-list li:hover{background:var(--accent-soft);transform:translateY(-1px);box-shadow:0 4px 12px rgba(20,22,26,.05);}
+  .base-list li.no-preview{cursor:default;}
+  .base-list li.no-preview:hover{background:var(--surface);transform:none;box-shadow:none;}
   .base-list li:before{content:"";position:absolute;left:11px;top:13px;width:14px;height:14px;border-radius:50%;background:var(--accent-soft);transition:background .15s var(--ease);}
   .base-list li:hover:before{background:#fff;}
   .base-list li:after{content:"";position:absolute;left:15px;top:16.5px;width:6px;height:3px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg);}
@@ -412,6 +414,7 @@
   .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:8px;}
   @media(max-width:800px){.contact-wrap{grid-template-columns:1fr;}}
   .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px;}
+  .contact-card--solo{max-width:420px;margin-top:24px;}
   .contact-card b{font-size:var(--fs-xl);font-weight:700;display:block;margin-bottom:8px;letter-spacing:var(--tracking-snug);}
   .contact-card .line{font-size:var(--fs-base);color:var(--muted);margin-bottom:4px;}
   .contact-card .line a{color:var(--accent);text-decoration:none;font-weight:500;}
@@ -500,7 +503,7 @@
     h1{font-size:clamp(30px,9vw,46px);}
     .hero-sub{font-size:15px;}
     .hero-headline-row{gap:16px;margin-top:28px;flex-direction:column;}
-    h1.event-name{font-size:clamp(24px,7vw,32px);}
+    h1.event-name{font-size:clamp(18px,4.6vw,22px);line-height:1.35;}
     .stats-box{width:100%;padding:18px 14px;border-radius:14px;gap:14px;}
     .stats-inner .cd-row{flex-wrap:wrap;gap:18px 20px;}
     .stats-inner .hero-stat{flex:1 1 auto;min-width:88px;}
@@ -668,7 +671,7 @@
         <div class="share-gate-msg" id="shareGateMsg"></div>
       </div>
 
-      <p class="sb-note">Klikając „Wyślij pakiet", przygotowana wiadomość z podsumowaniem wybranych zostanie wysłana do M-ACTIVE.</p>
+      <p class="sb-note">Klikając „Wyślij pakiet", przygotowana wiadomość z podsumowaniem wybranych opcji zostanie wysłana do M-ACTIVE.</p>
       <button class="sb-cta" id="sbSendBtn" onclick="sendPackageFromSummary()">
         <span class="spinner" id="sbSpinner"></span><span id="sbSendLabel">Wyślij pakiet →</span>
       </button>
@@ -692,36 +695,11 @@
 <section class="alt" id="kontakt"><div class="inner">
   <div class="eyebrow"><span class="idx">06</span> Kontakt</div>
   <h2>Serdecznie zapraszamy do współpracy w 2027 roku.</h2>
-  <div class="contact-wrap">
-    <div class="contact-card">
-      <div class="line" style="margin-bottom:10px;">Osoba odpowiedzialna ze strony agencji M-ACTIVE</div>
-      <b>Marek Durski</b>
-      <div class="line">Tel. <a href="tel:602639738">602 639 738</a></div>
-      <div class="line">Mail. <a href="mailto:durski@m-active.pl">durski@m-active.pl</a></div>
-    </div>
-    <div class="form-shell">
-      <div class="form-view" id="formView">
-        <div class="send-summary">
-          <div class="send-summary-row"><span>Twój skonfigurowany pakiet</span><span class="tnum" id="ctaTotal">16 000 PLN</span></div>
-          <p class="send-summary-note">Klikając „Wyślij pakiet", przygotowana wiadomość z podsumowaniem wybranych zostanie wysłana do M-ACTIVE.</p>
-        </div>
-        <button class="submit-btn" id="submitBtn" onclick="submitForm()">
-          <span class="spinner"></span><span class="btn-label">Wyślij pakiet</span>
-        </button>
-      </div>
-      <div class="status-card success" id="successCard">
-        <div class="status-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Zapytanie wysłane</h4>
-        <p>Dziękujemy! Marek Durski odezwie się w ciągu 24 godzin z odpowiedzią na Twoją ofertę.</p>
-        <button onclick="resetForm()">Wyślij kolejne zapytanie</button>
-      </div>
-      <div class="status-card error" id="errorCard">
-        <div class="status-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16h.01M10.3 3.9L2.7 17a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Nie udało się wysłać zapytania</h4>
-        <p>Coś poszło nie tak po naszej stronie. Spróbuj ponownie lub napisz bezpośrednio: <a href="mailto:durski@m-active.pl" style="color:#fff;text-decoration:underline;">durski@m-active.pl</a></p>
-        <button onclick="resetForm()">Spróbuj ponownie</button>
-      </div>
-    </div>
+  <div class="contact-card contact-card--solo">
+    <div class="line" style="margin-bottom:10px;">Osoba odpowiedzialna ze strony agencji M-ACTIVE</div>
+    <b>Marek Durski</b>
+    <div class="line">Tel. <a href="tel:602639738">602 639 738</a></div>
+    <div class="line">Mail. <a href="mailto:durski@m-active.pl">durski@m-active.pl</a></div>
   </div>
 </div></section>
 
@@ -839,15 +817,24 @@ function switchStatTab(slug){
   animateBars(document.getElementById('panel-'+slug));
   const activeBtn = document.querySelector('#statTabs .tab-btn.active');
   if(activeBtn) activeBtn.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  updateTabArrows();
 }
 animateBars(document.getElementById('panel-obszar-zaangażowania-projektowego'));
 new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ const a=document.querySelector('.tab-panel.active'); if(a) animateBars(a); } }); },{threshold:.4}).observe(document.getElementById('uczestnicy'));
 
 /* ---------- TABS ARROW NAV ---------- */
-function scrollTabs(dir){ tabsEl.scrollBy({left: dir*220, behavior:'smooth'}); }
+const statSlugs = Object.keys(statData).map(slugify);
+function scrollTabs(dir){
+  const current = document.querySelector('#statTabs .tab-btn.active');
+  const currentIdx = current ? statSlugs.indexOf(current.dataset.key) : 0;
+  const nextIdx = Math.min(statSlugs.length-1, Math.max(0, currentIdx+dir));
+  switchStatTab(statSlugs[nextIdx]);
+}
 function updateTabArrows(){
-  const atStart = tabsEl.scrollLeft <= 4;
-  const atEnd = tabsEl.scrollLeft + tabsEl.clientWidth >= tabsEl.scrollWidth - 4;
+  const current = document.querySelector('#statTabs .tab-btn.active');
+  const currentIdx = current ? statSlugs.indexOf(current.dataset.key) : 0;
+  const atStart = currentIdx <= 0;
+  const atEnd = currentIdx >= statSlugs.length-1;
   document.getElementById('tabsPrev').classList.toggle('disabled', atStart);
   document.getElementById('tabsNext').classList.toggle('disabled', atEnd);
   document.getElementById('tabsNext').classList.toggle('hint', !atEnd);
@@ -877,6 +864,7 @@ const firmsData = [
   {"name": "Bogucki Urbanowicz Architekci", "city": "Kraków", "url": "https://bua.com.pl/"},
   {"name": "BOOM.ARCHITECTS", "city": "Kraków", "url": "https://boomarchitects.com/"},
   {"name": "BPI Architekci", "city": "Lublin", "url": "http://www.bpiarchitekci.pl/"},
+  {"name": "Buro Happold", "city": "Warszawa", "url": "https://www.burohappold.com/offices/warsaw/"},
   {"name": "CAVU Architekci", "city": "Kraków", "url": "https://www.cavuarchitekci.pl/"},
   {"name": "Centralny Port Komunikacyjny", "city": "Warszawa", "url": "https://portpolska.pl/pl/"},
   {"name": "DSGN", "city": "Warszawa", "url": "https://www.dsgn.pl/"},
@@ -890,8 +878,8 @@ const firmsData = [
   {"name": "Hexa Green Architekt", "city": "Kielce", "url": "https://hexagreen.pl/"},
   {"name": "integra projekt", "city": "Buczkowice", "url": "http://www.integraprojekt.com/"},
   {"name": "JPArchitekci", "city": "Warszawa", "url": "http://jparchitekci.pl/"},
-  {"name": "Buro Happold", "city": "Warszawa", "url": "https://www.burohappold.com/offices/warsaw/"},
   {"name": "KiP", "city": "Warszawa", "url": "https://kip.waw.pl/"},
+  {"name": "KONCEPT Grupa Architektoniczna", "city": "Wrocław", "url": "https://www.koncept-architekci.pl/"},
   {"name": "KRYJAK - Biuro Projektów", "city": "Tychy", "url": "https://www.kryjak.pl/"},
   {"name": "LAB3 Architekci", "city": "Poznań", "url": "https://www.lab3.pl/"},
   {"name": "Latergrupa Architekci", "city": "Warszawa", "url": "https://latergrupa.pl/"},
@@ -899,7 +887,6 @@ const firmsData = [
   {"name": "Mamgusta Architekci", "city": "Warszawa", "url": "https://mamgusta.com/"},
   {"name": "Marlena Pilch PRO ARCHITEKTURA", "city": "Kraków", "url": "https://pilch.pro/"},
   {"name": "Mąka Sojka Architekci", "city": "Warszawa", "url": "http://maka-sojka.com/"},
-  {"name": "Mieszko Mazurek Koncept Grupa Architektoniczna", "city": "Wrocław", "url": "https://www.koncept-architekci.pl/"},
   {"name": "Mobius Architekci", "city": "Warszawa", "url": "https://mobius.pl/"},
   {"name": "MOFO Architekci", "city": "Kraków", "url": "https://mofo.pl/"},
   {"name": "NEOM", "city": "Tabuk", "url": "https://neom-international.com/neom-design/"},
@@ -973,53 +960,59 @@ const previewIcon = `<button class="preview-btn" title="Zobacz zdjęcie" aria-la
 
 /* ---------- PAKIET PODSTAWOWY — klikalne pozycje z podglądem foto ---------- */
 const baseItems = [
-  "Logotyp na flagach ulokowanych przed głównym wejściem do hotelu",
-  "Logotyp na potykaczach ulokowanych w wejściu głównym do hotelu",
-  "Logotyp przy recepcji głównej organizatora w trakcie expo",
-  "Logotyp w oficjalnym programie imprezy (wersja elektroniczna)",
-  "Logotyp w newsletterze rozsyłanym do uczestników imprezy",
-  "Logotyp na dyplomach dla zwycięzców",
-  "Prawo do lokowania materiałów promocyjnych w oficjalnym pakiecie startowym",
-  "Logotyp na stronie internetowej imprezy",
-  "Dostęp do bazy danych uczestników po imprezie",
-  "NOWOŚĆ: dostęp do wyników badań ankietowych architektów",
+  {name:"Logotyp na flagach ulokowanych przed głównym wejściem do hotelu", img:"images/przywileje/flagi-hotel.jpg"},
+  {name:"Logotyp na potykaczach ulokowanych w wejściu głównym do hotelu", img:"images/przywileje/potykacze-hotel.jpg"},
+  {name:"Logotyp przy recepcji głównej organizatora w trakcie expo", img:"images/przywileje/recepcja-expo.jpg"},
+  {name:"Logotyp w oficjalnym programie imprezy (wersja elektroniczna)"},
+  {name:"Logotyp w newsletterze rozsyłanym do uczestników imprezy"},
+  {name:"Logotyp na dyplomach dla zwycięzców"},
+  {name:"Prawo do lokowania materiałów promocyjnych w oficjalnym pakiecie startowym", img:"images/przywileje/materialy-pakiet-startowy.jpg"},
+  {name:"Logotyp na stronie internetowej imprezy"},
+  {name:"Dostęp do bazy danych uczestników po imprezie"},
+  {name:"NOWOŚĆ: dostęp do wyników badań ankietowych architektów"},
 ];
 const baseListEl=document.getElementById('baseList');
-baseItems.forEach(name=>{
+baseItems.forEach(item=>{
   const li=document.createElement('li');
-  li.innerHTML = `<span>${name}</span>${previewIcon}`;
-  li.onclick=()=>openLightbox(name);
-  const prevBtn = li.querySelector('.preview-btn');
-  prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(name); };
+  if(item.img){
+    li.innerHTML = `<span>${item.name}</span>${previewIcon}`;
+    li.onclick=()=>openLightbox(item.name, item.img);
+    const prevBtn = li.querySelector('.preview-btn');
+    prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(item.name, item.img); };
+  } else {
+    li.classList.add('no-preview');
+    li.innerHTML = `<span>${item.name}</span>`;
+  }
   baseListEl.appendChild(li);
 });
 
 /* ---------- ADDONS / PACKAGE ---------- */
 const addons = [
-  {name:"Logotyp na głównym słupie informacyjnym w hotelu", price:300},
+  {name:"Logotyp na głównym słupie informacyjnym w hotelu", price:300, img:"images/przywileje/slup-informacyjny.jpg"},
   {name:"Logotyp na materiałach informacyjnych – pokoje hotelowe", price:600},
-  {name:"Logotyp na ściance – tło dekoracji zwycięzców", price:1200},
-  {name:"Logotyp na namiocie startowym", price:1500},
-  {name:"Logotyp na słupkach startowych", price:1200},
-  {name:"Przedstawiciel wywołany do wręczenia nagród w trakcie …", price:1000},
-  {name:"Udział w expo", price:2400},
-  {name:"Własne materiały marketingowe na stoku", price:1000},
-  {name:"Realizacja konkursu dla architektów w trakcie sobotniego…", price:1200},
-  {name:"Logotyp na szmatach gigantowych – opcja na wyłączność", price:3600, disabled:true, tag:"Zarezerwowane"},
+  {name:"Logotyp na ściance – tło dekoracji zwycięzców", price:1200, img:"images/przywileje/scianka-dekoracji.jpg"},
+  {name:"Logotyp na namiocie startowym", price:1500, img:"images/przywileje/namiot-startowy.jpg"},
+  {name:"Logotyp na słupkach startowych", price:1200, img:"images/przywileje/slupki-startowe.jpg"},
+  {name:"Przedstawiciel wywołany do wręczenia nagród w trakcie …", price:1000, img:"images/przywileje/wreczenie-nagrod.jpg"},
+  {name:"Udział w expo", price:2400, img:"images/przywileje/udzial-w-expo-logo.jpg"},
+  {name:"Własne materiały marketingowe na stoku", price:1000, img:"images/przywileje/materialy-marketingowe-stok.jpg"},
+  {name:"Realizacja konkursu dla architektów w trakcie sobotniego…", price:1200, img:"images/przywileje/konkurs-architekci-sobota.jpg"},
+  {name:"Logotyp na szmatach gigantowych – opcja na wyłączność", price:3600, disabled:true, tag:"Zarezerwowane", img:"images/przywileje/szmaty-gigantowe.jpg"},
   {name:"Udział w prezentacji realizacji obiektów referencyjnych", price:1000},
 ];
 const addonListEl=document.getElementById('addonList');
 const summaryListEl=document.getElementById('selectedItems');
 addons.forEach((item,idx)=>{
   const li=document.createElement('li'); li.className='addon'+(item.disabled?' disabled':'');
+  const icon = item.img ? previewIcon : '';
   li.innerHTML = item.disabled
-    ? `<div class="box"></div><div class="a-name">${item.name}</div><span class="a-tag">${item.tag}</span>${previewIcon}`
-    : `<div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="a-name">${item.name}</div><div class="a-price tnum">${item.price.toLocaleString('pl-PL')} PLN</div>${previewIcon}`;
+    ? `<div class="box"></div><div class="a-name">${item.name}</div><span class="a-tag">${item.tag}</span>${icon}`
+    : `<div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="a-name">${item.name}</div><div class="a-price tnum">${item.price.toLocaleString('pl-PL')} PLN</div>${icon}`;
   if(!item.disabled){
     li.onclick=(ev)=>{ toggleAddon(idx, li, ev); };
   }
   const prevBtn = li.querySelector('.preview-btn');
-  prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(item.name); };
+  if(prevBtn) prevBtn.onclick = (ev)=>{ ev.stopPropagation(); openLightbox(item.name, item.img); };
   addonListEl.appendChild(li);
 
   const sm=document.createElement('li'); sm.className='sm-item'; sm.id='sm-'+idx;
@@ -1173,10 +1166,15 @@ function renderCourse(brand){
   document.querySelectorAll('.brand-tab').forEach(b=>b.classList.toggle('active',b.dataset.brand===brand));
   const years = brandHistory[brand].years;
   const line=document.getElementById('courseLine'); line.innerHTML='<div class="baseline"></div>';
+  let firstActiveEl = null;
   eventYears.forEach(y=>{
     const d=document.createElement('div'); d.className='gate-year'+(years.includes(y)?' active':'');
     d.innerHTML=`<div class="dot"></div>${y}`; line.appendChild(d);
+    if(years.includes(y) && !firstActiveEl) firstActiveEl = d;
   });
+  if(firstActiveEl){
+    firstActiveEl.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  }
 }
 renderCourse('Efaflex');
 syncCtaTotal();
@@ -1211,25 +1209,7 @@ function sendPackageFromSummary(){
     setTimeout(()=>{ label.textContent='Wyślij pakiet →'; }, 2200);
   }, 850);
 }
-function submitForm(){
-  const btn=document.getElementById('submitBtn');
-  btn.classList.add('sending'); btn.disabled=true;
-  setTimeout(()=>{
-    btn.classList.remove('sending'); btn.disabled=false;
-    showStatus('success');
-    window.location.href=buildPackageMailto();
-  }, 900);
-}
-function showStatus(kind){
-  document.getElementById('formView').style.display = 'none';
-  document.getElementById('successCard').classList.toggle('show', kind==='success');
-  document.getElementById('errorCard').classList.toggle('show', kind==='error');
-}
-function resetForm(){
-  document.getElementById('successCard').classList.remove('show');
-  document.getElementById('errorCard').classList.remove('show');
-  document.getElementById('formView').style.display='';
-}
+function submitForm(){}
 
 /* ---------- QA / states preview (recenzja prototypu) ---------- */
 function qaReset(){
